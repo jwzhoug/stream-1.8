@@ -22,7 +22,7 @@ public class DefaultSqlSession {
     }
 
     public <T> T selectOne(String statement,Object[] parameter,Class pojo){
-        String sql = configuration.getMapperStatement(statement);
+        String sql = configuration.getMappedStatement(statement);
         return executor.query(sql,parameter,pojo);
     }
 }

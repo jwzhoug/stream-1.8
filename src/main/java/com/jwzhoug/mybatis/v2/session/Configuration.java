@@ -5,7 +5,7 @@ import com.jwzhoug.mybatis.v2.annotation.Select;
 import com.jwzhoug.mybatis.v2.executor.CachingExecutor;
 import com.jwzhoug.mybatis.v2.executor.Executor;
 import com.jwzhoug.mybatis.v2.executor.SimpleExecutor;
-import com.jwzhoug.mybatis.v2.mapper.MapperRegistry;
+import com.jwzhoug.mybatis.v2.binding.MapperRegistry;
 import com.jwzhoug.mybatis.v2.plugin.Interceptor;
 import com.jwzhoug.mybatis.v2.plugin.InterceptorChain;
 
@@ -112,7 +112,7 @@ public class Configuration {
         if (properties.getString("cache.enabled").equals("true")) {
             executor = new CachingExecutor(new SimpleExecutor());
         } else {
-            return new SimpleExecutor();
+            executor = new SimpleExecutor();
         }
 
         // 目前只拦截Executor，所有插件都对Executor进行代理，并没有对拦截类和方法签名进行判断
